@@ -12,6 +12,10 @@ def baseURLPropertiesFile = rootProject.file("baseurl.properties")
 def baseURLProperties = new Properties()
 baseURLProperties.load(new FileInputStream(baseURLPropertiesFile))
 
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     compileSdk 32
 
@@ -20,6 +24,7 @@ android {
         targetSdk 32
 
         buildConfigField "String", "BASE_URL", baseURLProperties['BASE_URL']
+        buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
     }
 
     buildFeatures {
