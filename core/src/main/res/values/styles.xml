@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text -->
+    <style name="TextContent">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextContent.10">
+        <item name="android:textSize">@dimen/text_size_10sp</item>
+    </style>
+
+    <style name="TextContent.10.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="TextContent.10.DoveGray">
+        <item name="android:textColor">@color/dove_gray</item>
+    </style>
+
+    <style name="TextContent.10.MineShaft.EllipsizeEnd">
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextContent.12">
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+
+    <style name="TextContent.14">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+
+    <style name="TextContent.14.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="TextContent.14.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextContent.14.MineShaft.EllipsizeEnd">
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextContent.22">
+        <item name="android:textSize">@dimen/text_size_22sp</item>
+    </style>
+
+    <style name="TextContent.22.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="TextContent.Heading">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="TextContent.Heading.14">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+
+    <style name="TextContent.Heading.14.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="TextContent.Heading.16">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+
+    <style name="TextContent.Heading.16.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="TextContent.Heading.20">
+        <item name="android:textSize">@dimen/text_size_20sp</item>
+    </style>
+
+    <style name="TextContent.Heading.20.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextContent.Heading.22">
+        <item name="android:textSize">@dimen/text_size_22sp</item>
+    </style>
+
+    <style name="TextContent.Heading.22.MineShaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <!-- Progress Bar -->
+    <style name="ProgressBar">
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateTintMode">src_atop</item>
+        <item name="android:indeterminateTint">@color/mine_shaft</item>
+    </style>
+
+    <style name="ProgressBar.45">
+        <item name="android:layout_width">@dimen/spacing_45dp</item>
+        <item name="android:layout_height">@dimen/spacing_45dp</item>
+    </style>
+
+    <!-- Divider -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="Divider.WildSand">
+        <item name="android:background">@color/wild_sand</item>
+    </style>
+
+    <!-- Text Input -->
+    <style name="TextInput.EditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="colorControlActivated">@color/dove_gray</item>
+        <item name="boxStrokeColor">@color/mulled_wine</item>
+    </style>
+
+    <style name="TextInput.Layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/bg_edit_text</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="boxCornerRadiusTopStart">6dp</item>
+        <item name="boxCornerRadiusTopEnd">6dp</item>
+        <item name="android:theme">@style/TextInput.EditText</item>
+        <item name="boxCornerRadiusBottomEnd">6dp</item>
+        <item name="boxCornerRadiusBottomStart">6dp</item>
+        <item name="errorTextColor">@color/cinnabar</item>
+        <item name="boxStrokeErrorColor">@color/cinnabar</item>
+        <item name="hintTextColor">@color/mulled_wine</item>
+    </style>
+
+    <style name="TextInputEditText" parent="TextContent.14.MineShaft">
+        <item name="android:padding">0dp</item>
+    </style>
+</resources>
