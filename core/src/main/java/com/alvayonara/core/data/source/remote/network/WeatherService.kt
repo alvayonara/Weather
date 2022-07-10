@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WeatherService {
-    @GET
+    @GET("onecall")
     fun getWeather(
         @Query("lat") latitude: String,
         @Query("lon") longitude: String,

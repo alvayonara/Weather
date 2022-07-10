@@ -14,7 +14,7 @@ class App: Application() {
     }
 
     val appComponent: AppComponent by lazy {
-        DaggerAppComponent.factory().create(coreComponent)
+        DaggerAppComponent.factory().create(applicationContext, coreComponent)
     }
 
     override fun onCreate() {

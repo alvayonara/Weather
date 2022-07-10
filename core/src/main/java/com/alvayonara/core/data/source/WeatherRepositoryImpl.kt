@@ -7,6 +7,7 @@ import com.alvayonara.core.data.source.remote.response.WeatherResponse
 import com.alvayonara.core.domain.repository.WeatherRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -21,17 +22,23 @@ class WeatherRepositoryImpl @Inject constructor(
 
     override fun getAllWeather(): Observable<List<WeatherEntity>> = weatherDao.getAllWeather()
 
-    override fun insertWeather(weatherEntity: WeatherEntity): Completable =
+    override fun insertWeather(weatherEntity: WeatherEntity): Single<Long> =
         weatherDao.insertWeather(weatherEntity)
 
-    override fun insertAllWeather(weathers: List<WeatherEntity>): Completable =
+    override fun insertAllWeather(weathers: List<WeatherEntity>): Single<List<Long>> =
         weatherDao.insertAllWeather(weathers)
 
-    override fun deleteWeather(latitude: String, longitude: String): Completable =
+    override fun deleteWeather(latitude: String, longitude: String): Single<Int> =
         weatherDao.deleteWeather(latitude, longitude)
 
-    override fun deleteAllWeather(): Completable = weatherDao.deleteAllWeather()
+    override fun deleteAllWeather(): Single<Int> = weatherDao.deleteAllWeather()
 
     override fun isLocationExist(location: String): Observable<Boolean> =
         weatherDao.isLocationExist(location)
+
+    override fun isWeatherExist(): Observable<Boolean> =
+        weatherDao.isWeatherExist()
+
+    override fun updateWeather(weatherEntity: WeatherEntity): Single<Int> =
+        weatherDao.updateWeather(weatherEntity)
 }

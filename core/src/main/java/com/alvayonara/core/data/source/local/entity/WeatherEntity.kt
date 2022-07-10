@@ -1,10 +1,13 @@
 package com.alvayonara.core.data.source.local.entity
 
+import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "weather")
 data class WeatherEntity(
     @PrimaryKey(autoGenerate = true)
@@ -27,4 +30,4 @@ data class WeatherEntity(
     var windSpeed: String? = "",
     @ColumnInfo(name = "pressure")
     var pressure: String? = ""
-)
+): Parcelable
