@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/spacing_16dp"
+    android:paddingStart="@dimen/spacing_16dp"
+    android:paddingEnd="@dimen/spacing_16dp">
+
+    <TextView
+        android:id="@+id/tv_location"
+        style="@style/TextContent.Heading.16.MineShaft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginEnd="@dimen/spacing_24dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jakarta" />
+
+    <TextView
+        android:id="@+id/tv_weather"
+        style="@style/TextContent.Heading.14.MineShaft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginEnd="@dimen/spacing_24dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location"
+        tools:text="Rainy" />
+
+    <TextView
+        android:id="@+id/tv_latitude_longitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:layout_marginEnd="@dimen/spacing_24dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_regular"
+        android:lineHeight="@dimen/text_size_16sp"
+        android:maxLines="1"
+        android:textColor="@color/mine_shaft"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather"
+        tools:targetApi="p"
+        tools:text="Latitude: -110, Longitude: -10" />
+
+    <TextView
+        android:id="@+id/tv_temperature"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_latitude_longitude"
+        tools:text="Temperature 18" />
+
+    <TextView
+        android:id="@+id/tv_humidity"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_temperature"
+        tools:text="Humidity 20" />
+
+    <TextView
+        android:id="@+id/tv_wind_speed"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_humidity"
+        tools:text="Wind Speed 18" />
+
+    <TextView
+        android:id="@+id/tv_pressure"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wind_speed"
+        tools:text="Pressure 18" />
+
+    <View
+        android:id="@+id/line_content"
+        style="@style/Divider.WildSand"
+        android:layout_marginHorizontal="@dimen/spacing_27dp"
+        android:layout_marginTop="@dimen/spacing_16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pressure" />
+</androidx.constraintlayout.widget.ConstraintLayout>

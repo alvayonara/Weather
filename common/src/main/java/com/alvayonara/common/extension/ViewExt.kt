@@ -23,22 +23,16 @@ fun EditText?.textToString(): String {
 
 /**
  * @param text text of snackbar
- * @param onRetry callback if user clicked retry button
  *
  * @return displaying Snackbar
  *
  */
 fun View.showErrorSnackbar(
-    text: String,
-    onRetry: (() -> Unit)
+    text: String
 ) {
     val snackbar = Snackbar.make(this, text, Snackbar.LENGTH_LONG).apply {
         setBackgroundTint(ContextCompat.getColor(this.context, R.color.cinnabar))
         setTextColor(ContextCompat.getColor(this.context, R.color.white))
-        setActionTextColor(ContextCompat.getColor(this.context, R.color.white))
-        setAction(this.context.getText(R.string.txt_retry_snackbar)) {
-            onRetry()
-        }
     }
     snackbar.show()
 }
