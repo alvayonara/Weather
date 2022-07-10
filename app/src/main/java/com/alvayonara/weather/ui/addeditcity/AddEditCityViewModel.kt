@@ -1,4 +1,4 @@
-package com.alvayonara.weather.ui.detailcity
+package com.alvayonara.weather.ui.addeditcity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.alvayonara.core.domain.usecase.WeatherUseCase
 import com.alvayonara.navigation.NavigationCommand
 import javax.inject.Inject
 
-class DetailCityViewModel @Inject constructor(private val weatherUseCase: WeatherUseCase) :
+class AddEditCityViewModel @Inject constructor(private val weatherUseCase: WeatherUseCase) :
     ViewModel() {
 
     private val _navigation = MutableLiveData<Event<NavigationCommand>>()

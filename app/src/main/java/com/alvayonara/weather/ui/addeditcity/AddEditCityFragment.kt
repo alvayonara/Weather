@@ -1,4 +1,4 @@
-package com.alvayonara.weather.ui.listcity
+package com.alvayonara.weather.ui.addeditcity
 
 import android.content.Context
 import android.os.Bundle
@@ -10,18 +10,18 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.alvayonara.navigation.NavigationCommand
 import com.alvayonara.weather.App
-import com.alvayonara.weather.databinding.FragmentListCityBinding
+import com.alvayonara.weather.databinding.FragmentAddEditCityBinding
 import com.alvayonara.weather.ui.ViewModelFactory
 import javax.inject.Inject
 
-class ListCityFragment : Fragment() {
+class AddEditCityFragment : Fragment() {
 
-    private var _binding: FragmentListCityBinding? = null
+    private var _binding: FragmentAddEditCityBinding? = null
     private val binding get() = _binding!!
 
     @Inject
     lateinit var factory: ViewModelFactory
-    private val _listCityViewModel: ListCityViewModel by viewModels { factory }
+    private val _addEditCityViewModel: AddEditCityViewModel by viewModels { factory }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,7 +32,7 @@ class ListCityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListCityBinding.inflate(inflater, container, false)
+        _binding = FragmentAddEditCityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -47,7 +47,7 @@ class ListCityFragment : Fragment() {
     }
 
     private fun subscribeViewModel() {
-        _listCityViewModel.navigation.observe(viewLifecycleOwner) {
+        _addEditCityViewModel.navigation.observe(viewLifecycleOwner) {
             it?.getContentIfNotHandled()?.let { command ->
                 when (command) {
                     is NavigationCommand.To -> findNavController().navigate(command.directions)

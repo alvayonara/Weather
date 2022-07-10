@@ -27,9 +27,9 @@
 
     <fragment
         android:id="@+id/addCityFragment"
-        android:name="com.alvayonara.weather.ui.addcity.AddCityFragment"
+        android:name="com.alvayonara.weather.ui.addeditcity.AddEditCityFragment"
         android:label="AddCityFragment"
-        tools:layout="@layout/fragment_add_city">
+        tools:layout="@layout/fragment_add_edit_city">
 
         <action
             android:id="@+id/action_addCityFragment_to_listCityFragment"
