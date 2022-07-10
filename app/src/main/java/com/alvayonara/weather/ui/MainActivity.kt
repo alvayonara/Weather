@@ -1,4 +1,4 @@
-package com.alvayonara.weather
+package com.alvayonara.weather.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

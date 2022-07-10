@@ -7,12 +7,7 @@ dependencies {
 
     // Unit Testing
     testImplementation "junit:junit:$junitVersion"
-    testImplementation "io.mockk:mockk:$mockkVersion"
-    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesTestVersion"
-
-    // Data Binding
-    implementation "androidx.databinding:databinding-runtime:$dataBindingVersion"
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion")
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timberVersion"
@@ -36,10 +31,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
-
-    // Kotlin Coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
