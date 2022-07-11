@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Minutely(
     @SerializedName("dt")
-    val dt: Int? = null,
+    val dt: String? = null,
     @SerializedName("precipitation")
-    val precipitation: Int? = null
+    val precipitation: String? = null
 )

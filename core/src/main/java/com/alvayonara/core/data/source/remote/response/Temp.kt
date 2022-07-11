@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Temp(
     @SerializedName("day")
-    val day: Double? = null,
+    val day: String? = null,
     @SerializedName("eve")
-    val eve: Double? = null,
+    val eve: String? = null,
     @SerializedName("max")
-    val max: Double? = null,
+    val max: String? = null,
     @SerializedName("min")
-    val min: Double? = null,
+    val min: String? = null,
     @SerializedName("morn")
-    val morn: Double? = null,
+    val morn: String? = null,
     @SerializedName("night")
-    val night: Double? = null
+    val night: String? = null
 )

@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +22,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.callbacks.onShow
-import com.alvayonara.common.extension.getThrowable
-import com.alvayonara.common.extension.gone
-import com.alvayonara.common.extension.showErrorSnackbar
-import com.alvayonara.common.extension.visible
+import com.alvayonara.common.extension.*
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
 import com.alvayonara.core.domain.model.Current
 import com.alvayonara.navigation.NavigationCommand
@@ -186,8 +184,7 @@ class ListCityFragment : Fragment() {
         _interactionViewModel.add.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { isAdded ->
                 if (isAdded) {
-                    binding.sbListCity.showErrorSnackbar(getString(R.string.txt_added))
-                    _listCityViewModel.getAllWeather(_current!!)
+                    binding.sbListCity.showSuccessSnackbar(getString(R.string.txt_added))
                 }
             }
         }
@@ -195,8 +192,7 @@ class ListCityFragment : Fragment() {
         _interactionViewModel.delete.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { isDeleted ->
                 if (isDeleted) {
-                    binding.sbListCity.showErrorSnackbar(getString(R.string.txt_deleted))
-                    _listCityViewModel.getAllWeather(_current!!)
+                    binding.sbListCity.showSuccessSnackbar(getString(R.string.txt_deleted))
                 }
             }
         }

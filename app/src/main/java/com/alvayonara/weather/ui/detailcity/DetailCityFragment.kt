@@ -11,10 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.alvayonara.common.extension.getThrowable
-import com.alvayonara.common.extension.gone
-import com.alvayonara.common.extension.showErrorSnackbar
-import com.alvayonara.common.extension.visible
+import com.alvayonara.common.extension.*
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
 import com.alvayonara.navigation.NavigationCommand
 import com.alvayonara.weather.App
@@ -122,7 +119,7 @@ class DetailCityFragment : Fragment() {
 
         _interactionViewModel.edit.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { edited ->
-                binding.sbDetail.showErrorSnackbar(getString(R.string.txt_edited))
+                binding.sbDetail.showSuccessSnackbar(getString(R.string.txt_edited))
                 _detailCityViewModel.getDetail(edited)
             }
         }

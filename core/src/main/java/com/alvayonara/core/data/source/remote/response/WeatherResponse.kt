@@ -11,13 +11,13 @@ data class WeatherResponse(
     @SerializedName("hourly")
     val hourly: List<Hourly>? = null,
     @SerializedName("lat")
-    val lat: Double? = null,
+    val lat: String? = null,
     @SerializedName("lon")
-    val lon: Double? = null,
+    val lon: String? = null,
     @SerializedName("minutely")
     val minutely: List<Minutely>? = null,
     @SerializedName("timezone")
     val timezone: String? = null,
     @SerializedName("timezone_offset")
-    val timezoneOffset: Int? = null
+    val timezoneOffset: String? = null
 )

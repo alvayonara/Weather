@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
 import com.alvayonara.common.utils.Event
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
 import com.alvayonara.core.domain.model.Current
 import com.alvayonara.core.domain.usecase.WeatherUseCase
 import com.alvayonara.navigation.NavigationCommand
+import com.alvayonara.weather.utils.WeatherMapper.mapWeatherResponseToEntity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -56,51 +56,75 @@ class AddEditCityViewModel @Inject constructor(private val weatherUseCase: Weath
 
     fun add(current: Current) {
         _compositeDisposable.add(weatherUseCase.isLocationExist(current.location)
+            .firstOrError()
             .doOnSubscribe { _add.postValue(Add.Loading) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .take(1)
             .subscribe { isLocationExist ->
                 if (isLocationExist) {
                     _add.postValue(Add.LocationExist)
                 } else {
                     _compositeDisposable.add(
-                        weatherUseCase.insertWeather(
-                            WeatherEntity(
-                                location = current.location,
-                                latitude = current.latitude,
-                                longitude = current.longitude
-                            )
-                        ).subscribeOn(Schedulers.io())
+                        weatherUseCase.getWeather(current.latitude, current.longitude)
+                            .flatMapSingle {
+                                weatherUseCase.insertWeather(
+                                    it.mapWeatherResponseToEntity(
+                                        current.location
+                                    )
+                                )
+                            }
+                            .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({
                                 _add.postValue(Add.Success)
-                            }, {})
+                            }, {
+                                _add.postValue(Add.Failed(it))
+                            })
                     )
                 }
             })
     }
 
     fun edit(weatherEntity: WeatherEntity) {
-        _compositeDisposable.add(weatherUseCase.updateWeather(weatherEntity)
+        _compositeDisposable.add(weatherUseCase.getWeather(
+            weatherEntity.latitude!!,
+            weatherEntity.longitude!!
+        )
+            .flatMapSingle {
+                weatherUseCase.updateWeather(
+                    weatherEntity.copy(
+                        latitude = it.lat.toString(),
+                        longitude = it.lon.toString(),
+                        currentWeather = it.current?.weather?.firstOrNull()?.main,
+                        temperature = it.current?.temp.toString(),
+                        humidity = it.current?.humidity.toString(),
+                        windSpeed = it.current?.windSpeed.toString(),
+                        pressure = it.current?.pressure.toString()
+                    )
+                )
+            }
             .doOnSubscribe { _edit.postValue(Edit.Loading) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _edit.postValue(Edit.Success)
-            }, {})
+            }, {
+                _edit.postValue(Edit.Failed(it))
+            })
         )
     }
 
     sealed class Add {
         object Loading : Add()
         object Success : Add()
+        data class Failed(val data: Throwable) : Add()
         object LocationExist : Add()
     }
 
     sealed class Edit {
         object Loading : Edit()
         object Success : Edit()
+        data class Failed(val data: Throwable) : Edit()
     }
 
     override fun onCleared() {
