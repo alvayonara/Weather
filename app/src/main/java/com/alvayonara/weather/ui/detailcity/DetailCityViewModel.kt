@@ -10,8 +10,6 @@ import com.alvayonara.common.utils.Event
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
 import com.alvayonara.core.domain.usecase.WeatherUseCase
 import com.alvayonara.navigation.NavigationCommand
-import com.alvayonara.weather.ui.listcity.ListCityViewModel
-import com.alvayonara.weather.utils.WeatherMapper.mapWeatherResponseToEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
