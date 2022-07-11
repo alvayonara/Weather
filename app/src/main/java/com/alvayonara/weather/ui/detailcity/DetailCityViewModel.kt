@@ -67,7 +67,7 @@ class DetailCityViewModel @Inject constructor(
                     )
                 )
             }
-            .flatMap { weatherUseCase.getWeatherById(weatherEntity.id!!) }
+            .flatMap { weatherUseCase.getWeatherById(weatherEntity.id) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -80,7 +80,7 @@ class DetailCityViewModel @Inject constructor(
         val isInternetOff = Connectivity.isInternetOn(context)
             .doOnSubscribe { _detail.postValue(Detail.Loading) }
             .filter { connected -> !connected }
-            .flatMap { weatherUseCase.getWeatherById(weatherEntity.id!!) }
+            .flatMap { weatherUseCase.getWeatherById(weatherEntity.id) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _detail.postValue(Detail.Success(it)) }
