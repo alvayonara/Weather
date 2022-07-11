@@ -2,6 +2,7 @@ package com.alvayonara.weather.ui.listcity
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,8 +11,10 @@ import com.alvayonara.common.utils.Connectivity
 import com.alvayonara.common.utils.Event
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
 import com.alvayonara.core.data.source.remote.response.WeatherResponse
+import com.alvayonara.core.domain.model.Current
 import com.alvayonara.core.domain.usecase.WeatherUseCase
 import com.alvayonara.navigation.NavigationCommand
+import com.alvayonara.weather.utils.WeatherMapper.mapWeatherResponseToEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -30,10 +33,6 @@ class ListCityViewModel @Inject constructor(
     private val _list = MutableLiveData<ListCity>()
     val list: LiveData<ListCity> = _list
 
-    init {
-        getAllWeather()
-    }
-
     /**
      * Used to handle navigation from [ViewModel]
      */
@@ -42,15 +41,15 @@ class ListCityViewModel @Inject constructor(
     }
 
     @SuppressLint("CheckResult")
-    fun getAllWeather() {
+    fun getAllWeather(current: Current) {
         val isInternetOnEmpty = Connectivity.isInternetOn(context)
             .doOnSubscribe { _list.postValue(ListCity.Loading) }
             .filter { connected -> connected }
             .flatMap { weatherUseCase.isWeatherExist() }
             .filter { isWeatherExist -> !isWeatherExist }
-            .flatMap { weatherUseCase.getWeather("22", "22") }
+            .flatMap { weatherUseCase.getWeather(current.latitude, current.longitude) }
             .flatMapSingle { response ->
-                weatherUseCase.insertWeather(response.mapWeatherResponseToEntity("location"))
+                weatherUseCase.insertWeather(response.mapWeatherResponseToEntity(current.location))
             }
             .flatMap { weatherUseCase.getAllWeather() }
             .subscribeOn(Schedulers.io())
@@ -100,6 +99,8 @@ class ListCityViewModel @Inject constructor(
             .doOnSubscribe { _list.postValue(ListCity.Loading) }
             .filter { connected -> !connected }
             .flatMap { weatherUseCase.isWeatherExist() }
+            .filter { isWeatherExist -> !isWeatherExist }
+            .flatMap { weatherUseCase.getAllWeather() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _list.postValue(ListCity.Empty) }
@@ -116,18 +117,6 @@ class ListCityViewModel @Inject constructor(
             .subscribe { _list.postValue(ListCity.Success(it)) }
         _compositeDisposable.add(isInternetOffNotEmpty)
     }
-
-    private fun WeatherResponse.mapWeatherResponseToEntity(location: String): WeatherEntity =
-        WeatherEntity(
-            location = location,
-            latitude = this.lat.toString(),
-            longitude = this.lon.toString(),
-            currentWeather = this.current?.weather?.firstOrNull()?.main,
-            temperature = this.current?.temp.toString(),
-            humidity = this.current?.humidity.toString(),
-            windSpeed = this.current?.windSpeed.toString(),
-            pressure = this.current?.pressure.toString()
-        )
 
     sealed class ListCity {
         object Loading : ListCity()

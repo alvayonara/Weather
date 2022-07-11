@@ -17,6 +17,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:launchSingleTop="true" />
+
         <action
             android:id="@+id/action_listCityFragment_to_addCityFragment"
             app:destination="@id/addEditCityFragment"
@@ -37,6 +38,20 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/listCityFragment"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_addEditCityFragment_to_detailCityFragment"
+            app:destination="@id/detailCityFragment"
+            app:popUpTo="@id/listCityFragment"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
+
+        <argument
+            android:name="weather"
+            app:argType="com.alvayonara.core.data.source.local.entity.WeatherEntity" />
     </fragment>
 
     <fragment
@@ -52,8 +67,15 @@
             app:popUpTo="@id/listCityFragment"
             app:popUpToInclusive="true" />
 
+        <action
+            android:id="@+id/action_detailCityFragment_to_addEditCityFragment"
+            app:destination="@id/addEditCityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true" />
+
         <argument
-            android:name="weatherEntity"
+            android:name="weather"
             app:argType="com.alvayonara.core.data.source.local.entity.WeatherEntity" />
     </fragment>
 </navigation>

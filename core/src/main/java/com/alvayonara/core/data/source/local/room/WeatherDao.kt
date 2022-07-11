@@ -11,6 +11,9 @@ interface WeatherDao {
     @Query("SELECT * FROM weather")
     fun getAllWeather(): Observable<List<WeatherEntity>>
 
+    @Query("SELECT * FROM weather WHERE id = :id")
+    fun getWeatherById(id: Int): Observable<WeatherEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWeather(weatherEntity: WeatherEntity): Single<Long>
 

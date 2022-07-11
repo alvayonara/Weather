@@ -2,6 +2,7 @@ package com.alvayonara.weather.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.alvayonara.weather.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

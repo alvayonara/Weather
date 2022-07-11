@@ -7,8 +7,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
 @Entity(tableName = "weather")
+@Parcelize
 data class WeatherEntity(
     @PrimaryKey(autoGenerate = true)
     @NonNull

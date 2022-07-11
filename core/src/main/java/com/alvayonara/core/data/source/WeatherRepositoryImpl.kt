@@ -20,6 +20,8 @@ class WeatherRepositoryImpl @Inject constructor(
         appId: String
     ): Observable<WeatherResponse> = weatherService.getWeather(latitude, longitude, appId)
 
+    override fun getWeatherById(id: Int): Observable<WeatherEntity> = weatherDao.getWeatherById(id)
+
     override fun getAllWeather(): Observable<List<WeatherEntity>> = weatherDao.getAllWeather()
 
     override fun insertWeather(weatherEntity: WeatherEntity): Single<Long> =
