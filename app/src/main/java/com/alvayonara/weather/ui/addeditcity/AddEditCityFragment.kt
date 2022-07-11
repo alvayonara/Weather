@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.alvayonara.common.extension.getThrowable
 import com.alvayonara.common.extension.gone
 import com.alvayonara.common.extension.showErrorSnackbar
 import com.alvayonara.common.extension.visible
@@ -20,6 +21,7 @@ import com.alvayonara.weather.R
 import com.alvayonara.weather.databinding.FragmentAddEditCityBinding
 import com.alvayonara.weather.ui.InteractionViewModel
 import com.alvayonara.weather.ui.ViewModelFactory
+import com.alvayonara.weather.utils.Field.hideKeyboard
 import com.alvayonara.weather.utils.Field.observeField
 import javax.inject.Inject
 
@@ -79,6 +81,7 @@ class AddEditCityFragment : Fragment() {
                 }
 
                 btnAddEditWeather.setOnClickListener {
+                    hideKeyboard(requireActivity())
                     if (arguments.isEdit) {
                         arguments.weather.let { weatherEntity ->
                             weatherEntity.copy(
@@ -131,6 +134,17 @@ class AddEditCityFragment : Fragment() {
                     binding.pbAddEdit.gone()
                     binding.sbAddEdit.showErrorSnackbar(getString(R.string.txt_location_exist))
                 }
+                is AddEditCityViewModel.Add.Failed -> {
+                    binding.pbAddEdit.gone()
+                    it.data.let { throwable ->
+                        binding.sbAddEdit.showErrorSnackbar(
+                            getString(
+                                R.string.txt_error,
+                                throwable.getThrowable()
+                            )
+                        )
+                    }
+                }
             }
         }
 
@@ -139,7 +153,7 @@ class AddEditCityFragment : Fragment() {
                 is AddEditCityViewModel.Edit.Loading -> binding.pbAddEdit.visible()
                 is AddEditCityViewModel.Edit.Success -> {
                     binding.pbAddEdit.gone()
-                    args.weather?.let { weatherEntity ->
+                    args.weather.let { weatherEntity ->
                         weatherEntity.copy(
                             location = binding.edtLocation.text.toString(),
                             latitude = binding.edtLatitude.text.toString(),
@@ -149,6 +163,17 @@ class AddEditCityFragment : Fragment() {
                         }
                     }
                     _addEditCityViewModel.navigateBack()
+                }
+                is AddEditCityViewModel.Edit.Failed -> {
+                    binding.pbAddEdit.gone()
+                    it.data.let { throwable ->
+                        binding.sbAddEdit.showErrorSnackbar(
+                            getString(
+                                R.string.txt_error,
+                                throwable.getThrowable()
+                            )
+                        )
+                    }
                 }
             }
         }

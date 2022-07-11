@@ -13,7 +13,7 @@ data class WeatherEntity(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
-    var id: Int? = 0,
+    var id: Int = 0,
     @ColumnInfo(name = "location")
     var location: String? = "",
     @ColumnInfo(name = "latitude")

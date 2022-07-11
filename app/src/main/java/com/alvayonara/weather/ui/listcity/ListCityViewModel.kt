@@ -2,7 +2,6 @@ package com.alvayonara.weather.ui.listcity
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,6 @@ import androidx.navigation.NavDirections
 import com.alvayonara.common.utils.Connectivity
 import com.alvayonara.common.utils.Event
 import com.alvayonara.core.data.source.local.entity.WeatherEntity
-import com.alvayonara.core.data.source.remote.response.WeatherResponse
 import com.alvayonara.core.domain.model.Current
 import com.alvayonara.core.domain.usecase.WeatherUseCase
 import com.alvayonara.navigation.NavigationCommand
@@ -52,6 +50,7 @@ class ListCityViewModel @Inject constructor(
                 weatherUseCase.insertWeather(response.mapWeatherResponseToEntity(current.location))
             }
             .flatMap { weatherUseCase.getAllWeather() }
+            .firstOrError()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -67,8 +66,9 @@ class ListCityViewModel @Inject constructor(
             .flatMap { weatherUseCase.isWeatherExist() }
             .filter { isWeatherExist -> isWeatherExist }
             .flatMap { weatherUseCase.getAllWeather() }
+            .firstOrError()
+            .toObservable()
             .flatMapIterable { listCity -> listCity }
-            .take(1)
             .flatMap { weatherEntity ->
                 weatherUseCase.getWeather(
                     weatherEntity.latitude!!,
@@ -112,9 +112,10 @@ class ListCityViewModel @Inject constructor(
             .flatMap { weatherUseCase.isWeatherExist() }
             .filter { isWeatherExist -> isWeatherExist }
             .flatMap { weatherUseCase.getAllWeather() }
+            .firstOrError()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { _list.postValue(ListCity.Success(it)) }
+            .subscribe({ _list.postValue(ListCity.Success(it)) }, {})
         _compositeDisposable.add(isInternetOffNotEmpty)
     }
 

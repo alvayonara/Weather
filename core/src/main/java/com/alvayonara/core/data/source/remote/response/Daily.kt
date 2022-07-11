@@ -5,41 +5,41 @@ import com.google.gson.annotations.SerializedName
 
 data class Daily(
     @SerializedName("clouds")
-    val clouds: Int? = null,
+    val clouds: String? = null,
     @SerializedName("dew_point")
-    val dewPoint: Double? = null,
+    val dewPoint: String? = null,
     @SerializedName("dt")
-    val dt: Int? = null,
+    val dt: String? = null,
     @SerializedName("feels_like")
     val feelsLike: FeelsLike? = null,
     @SerializedName("humidity")
-    val humidity: Int? = null,
+    val humidity: String? = null,
     @SerializedName("moon_phase")
-    val moonPhase: Double? = null,
+    val moonPhase: String? = null,
     @SerializedName("moonrise")
-    val moonrise: Int? = null,
+    val moonrise: String? = null,
     @SerializedName("moonset")
-    val moonset: Int? = null,
+    val moonset: String? = null,
     @SerializedName("pop")
-    val pop: Double? = null,
+    val pop: String? = null,
     @SerializedName("pressure")
-    val pressure: Int? = null,
+    val pressure: String? = null,
     @SerializedName("rain")
-    val rain: Double? = null,
+    val rain: String? = null,
     @SerializedName("sunrise")
-    val sunrise: Int? = null,
+    val sunrise: String? = null,
     @SerializedName("sunset")
-    val sunset: Int? = null,
+    val sunset: String? = null,
     @SerializedName("temp")
     val temp: Temp? = null,
     @SerializedName("uvi")
-    val uvi: Double? = null,
+    val uvi: String? = null,
     @SerializedName("weather")
     val weather: List<WeatherX>? = null,
     @SerializedName("wind_deg")
-    val windDeg: Int? = null,
+    val windDeg: String? = null,
     @SerializedName("wind_gust")
-    val windGust: Double? = null,
+    val windGust: String? = null,
     @SerializedName("wind_speed")
-    val windSpeed: Double? = null
+    val windSpeed: String? = null
 )

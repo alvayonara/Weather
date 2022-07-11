@@ -38,6 +38,22 @@ fun View.showErrorSnackbar(
 }
 
 /**
+ * @param text text of snackbar
+ *
+ * @return displaying Snackbar
+ *
+ */
+fun View.showSuccessSnackbar(
+    text: String
+) {
+    val snackbar = Snackbar.make(this, text, Snackbar.LENGTH_LONG).apply {
+        setBackgroundTint(ContextCompat.getColor(this.context, android.R.color.holo_green_light))
+        setTextColor(ContextCompat.getColor(this.context, R.color.white))
+    }
+    snackbar.show()
+}
+
+/**
  * @param path url of the image
  * @param errorColor error color
  * @return displaying image from Glide
