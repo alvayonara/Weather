@@ -1,14 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detailcity.DetailCityFragment">
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="@dimen/spacing_24dp"
+        android:layout_height="@dimen/spacing_24dp"
+        android:layout_marginStart="@dimen/spacing_16dp"
+        android:layout_marginTop="@dimen/spacing_16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_edit"
+        android:layout_width="@dimen/spacing_24dp"
+        android:layout_height="@dimen/spacing_24dp"
+        android:layout_marginTop="@dimen/spacing_16dp"
+        android:layout_marginEnd="@dimen/spacing_24dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintEnd_toStartOf="@+id/iv_delete"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="@dimen/spacing_24dp"
+        android:layout_height="@dimen/spacing_24dp"
+        android:layout_marginTop="@dimen/spacing_16dp"
+        android:layout_marginEnd="@dimen/spacing_16dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tv_weather"
+        style="@style/TextContent.Heading.20.Black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        android:paddingTop="@dimen/spacing_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_back"
+        tools:text="Rainy" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_latitude_longitude"
+        style="@style/TextContent.14.MineShaft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_weather"
+        tools:text="Latitude: -110, Longitude: -10" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_latitude_longitude">
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/TextContent.14.MineShaft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_8dp"
+            android:letterSpacing="0.05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_location"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Jakarta" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_temperature"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_location"
+        tools:text="Temperature 18" />
+
+    <TextView
+        android:id="@+id/tv_humidity"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_temperature"
+        tools:text="Humidity 20" />
+
+    <TextView
+        android:id="@+id/tv_wind_speed"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_humidity"
+        tools:text="Wind Speed 18" />
+
+    <TextView
+        android:id="@+id/tv_pressure"
+        style="@style/TextContent.10.DoveGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wind_speed"
+        tools:text="Pressure 18" />
+
+    <View
+        android:id="@+id/line_content"
+        style="@style/Divider.WildSand"
+        android:layout_marginTop="@dimen/spacing_16dp"
+        android:paddingHorizontal="@dimen/spacing_24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pressure" />
+
+    <ProgressBar
+        android:id="@+id/pb_detail"
+        style="@style/ProgressBar.45"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/sb_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

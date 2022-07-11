@@ -111,6 +111,8 @@
     <style name="TextInput.EditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="colorControlActivated">@color/dove_gray</item>
         <item name="boxStrokeColor">@color/mulled_wine</item>
+        <item name="colorPrimary">@color/mulled_wine</item>
+        <item name="colorOnSurface">@color/mulled_wine</item>
     </style>
 
     <style name="TextInput.Layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

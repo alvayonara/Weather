@@ -6,4 +6,20 @@
     <string name="txt_greeting">Welcome</string>
     <string name="txt_discover">Discover Weather</string>
     <string name="txt_new_city">Add New City</string>
+    <string name="txt_deleted">Weather successfully deleted</string>
+    <string name="txt_edited">Weather successfully edited</string>
+    <string name="txt_added">Weather successfully added</string>
+
+    <string name="request_permission">Allow Request</string>
+    <string name="request_permission_1">Allow Weather App to access this devices Location?</string>
+    <string name="request_permission_2">Allow</string>
+    <string name="request_permission_3">Deny</string>
+
+    <string name="txt_location">Location</string>
+    <string name="txt_latitude">Latitude</string>
+    <string name="txt_longitude">Longitude</string>
+    <string name="txt_save_weather">Save Weather</string>
+    <string name="txt_add_weather">Add Weather</string>
+    <string name="txt_edit_weather">Edit Weather</string>
+    <string name="txt_location_exist">Location Already Exist!</string>
 </resources>

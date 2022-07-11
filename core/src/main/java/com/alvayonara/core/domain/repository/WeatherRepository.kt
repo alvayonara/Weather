@@ -8,6 +8,7 @@ import io.reactivex.Single
 
 interface WeatherRepository {
     fun getWeather(latitude: String, longitude: String, appId: String): Observable<WeatherResponse>
+    fun getWeatherById(id: Int): Observable<WeatherEntity>
     fun getAllWeather(): Observable<List<WeatherEntity>>
     fun insertWeather(weatherEntity: WeatherEntity): Single<Long>
     fun insertAllWeather(weathers: List<WeatherEntity>): Single<List<Long>>

@@ -36,4 +36,14 @@ dependencies {
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion"
+
+    // Google Map
+    implementation "com.google.android.gms:play-services-maps:$googleServiceMapsVersion"
+    implementation "com.google.android.gms:play-services-location:$googleServiceLocationVersion"
+
+    // Karumi Dexter
+    implementation "com.karumi:dexter:$karumiDexterVersion"
+
+    // Material Dialog
+    implementation "com.afollestad.material-dialogs:core:$materialDialogVersion"
 }

@@ -16,6 +16,8 @@ class WeatherInteractor @Inject constructor(private val weatherRepository: Weath
         longitude: String
     ): Observable<WeatherResponse> = weatherRepository.getWeather(latitude, longitude, BuildConfig.API_KEY)
 
+    override fun getWeatherById(id: Int): Observable<WeatherEntity> = weatherRepository.getWeatherById(id)
+
     override fun getAllWeather(): Observable<List<WeatherEntity>> =
         weatherRepository.getAllWeather()
 
